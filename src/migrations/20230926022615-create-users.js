@@ -21,7 +21,13 @@ module.exports = {
     cpf: {
         allowNull: false,
         type: Sequelize.STRING,
-    }
+        unique: true
+    },
+    role: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
+
     });
   },
 
