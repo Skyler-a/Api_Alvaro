@@ -8,7 +8,7 @@ const router = Router()
 router
     .post('/api/v1/user', userPostMiddleware, UsersController.createUser)
     .put('/api/v1/user/:id', userPutMiddleware, UsersController.updateUser)
-    .delete('/api/v1/user/:id', UsersController.deleteUser)
+    .delete('/api/v1/user/:id/:idAdmin', UsersController.deleteUser)
     .get('/api/v1/user', UsersController.getUser)
     .get('/api/v1/user/:id', UsersController.getUserById)
 

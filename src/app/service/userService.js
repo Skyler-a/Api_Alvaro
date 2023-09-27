@@ -1,5 +1,6 @@
 const userRepository = require('../repository/userRepository')
 const validateCpf = require('../utils/validateCpf')
+const verifyIfAdmin = require('./verifyIfAdmin')
 
 class UserService {
     async createUser(payload) {
@@ -20,7 +21,8 @@ class UserService {
         const result = await userRepository.updateUser(payload, id)
         return result
     }
-    async deleteUser(id){
+    async deleteUser(id, idAdmin){
+        await verifyIfAdmin(idAdmin)
         const result = await userRepository.deleteUser(id)
         return result
     }
