@@ -1,11 +1,12 @@
 const userRepository = require('../repository/userRepository')
 const validateCpf = require('../utils/validateCpf')
 const verifyIfAdmin = require('./verifyIfAdmin')
+const BadRequest = require('../errors/badRequest')
 
 class UserService {
     async createUser(payload) {
         const cpfValidation = await validateCpf(payload.cpf)
-        if (cpfValidation === false) throw new Error('Invalid Cpf');
+        if (cpfValidation === false) throw new BadRequest('Invalid Cpf');
         const result = await userRepository.createUser(payload)
         return result
     }

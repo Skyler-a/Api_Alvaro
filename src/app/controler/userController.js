@@ -6,8 +6,7 @@ class UserController {
             const createUser = await UserService.createUser(req.body)
             return res.status(200).json(createUser)
         } catch (error){
-            console.log(error)
-            return res.status(400).json(error);
+            return res.status(400).json(error.message);
         }
     }
     async getUser(req, res){
@@ -39,8 +38,7 @@ class UserController {
             const deleteUser = await UserService.deleteUser(req.params.id, req.params.idAdmin)
             return res.status(200).json(deleteUser)
         } catch (error) {
-            console.log(error)
-            return res.status(400).json(error)
+            return res.status(400).json(error.message)
         }
     }
 

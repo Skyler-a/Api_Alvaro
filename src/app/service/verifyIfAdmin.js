@@ -1,9 +1,11 @@
 const userRepository = require('../repository/userRepository')
+const BadRequest = require('../errors/badRequest')
 
 async function verifyIfAdmin(idAdmin){
-    console.log(idAdmin)
+    if(!idAdmin) throw new BadRequest('You must use an admin Id')
     const result = await userRepository.getUserById(idAdmin)
-    if(result.role != 'manager')throw new Error('Your dumb ass bitch, youre not even an admin, why are you trying this shit?')
+    if(!result) throw new BadRequest('Id dont exist')
+    if(result.role != 'manager')throw new BadRequest('You dont have permission.')
 }
 
 module.exports = verifyIfAdmin
