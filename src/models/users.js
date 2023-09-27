@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         cpf: {
             allowNull: false,
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             unique: true
         },
         role: {
           allowNull: false,
-          type: Sequelize.STRING,
+          type: DataTypes.STRING,
         },
     },
         {

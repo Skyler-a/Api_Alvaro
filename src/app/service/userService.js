@@ -1,7 +1,10 @@
 const userRepository = require('../repository/userRepository')
+const validateCpf = require('../utils/validateCpf')
 
 class UserService {
     async createUser(payload) {
+        const cpfValidation = await validateCpf(payload.cpf)
+        if (cpfValidation === false) throw new Error('Invalid Cpf');
         const result = await userRepository.createUser(payload)
         return result
     }

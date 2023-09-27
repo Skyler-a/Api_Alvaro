@@ -6,7 +6,8 @@ class UserController {
             const createUser = await UserService.createUser(req.body)
             return res.status(200).json(createUser)
         } catch (error){
-            return res.status(500).json(error)
+            console.log(error)
+            return res.status(400).json(error);
         }
     }
     async getUser(req, res){
@@ -14,7 +15,7 @@ class UserController {
             const getUser = await UserService.getUser()
             return res.status(200).json(getUser)
         } catch (error) {
-            return res.status(500).json(error)
+            return res.status(400).json(error)
         }
     }
     async getUserById(req, res){
